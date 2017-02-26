@@ -2,11 +2,47 @@
 <!DOCTYPE struts PUBLIC
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
- 
 <struts>
+
 <package name="default" extends="struts-default">
+<action name="home"><result>index.jsp</result> </action>
+<action name="student"><result>/student/studentlogin.jsp</result> </action>
+<action name="staff"><result>/staff/stafflogin.jsp</result> </action>
+<action name="admin"><result>/admin/adminlogin.jsp</result> </action>
+<action name="catalog"><result>/student/catalog.jsp</result></action>
+<action name="courseselected" class="action.student.CourseSelectAction">
+<result>student/register.jsp</result> </action>
+
+
+<action name="studentlogin" class="action.student.LoginAction">
+<result name="success">/student/welcome.jsp</result>
+<result name="error">error.jsp</result>
+<result name="input">/student/studentlogin.jsp</result>
+</action>
+
+
+<action name="regprocess" class="action.student.RegAction">
+<result name="success">/student/success.jsp</result>
+<result name="error">/error.jsp</result>
+<result name="input">/student/register.jsp</result>
+</action>
+
+<action name="logout" class="action.student.LogoutAction">
+<result name="success">/student/studentlogin.jsp</result>
+</action>
+
+<action name="changePassword" class="action.student.ChangePasswordAction">
+<result name="success">/student/welcome.jsp</result>
+<result name="input">/student/welcome.jsp</result>
+</action>
+
 
 </package>
+
+
+
+
+
 
 
 </struts>

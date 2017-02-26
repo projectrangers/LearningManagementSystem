@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+        
+ <validators>
+  <field name="name">
+ <field-validator type="requiredstring" >
+<message>Name is required.</message>
+  </field-validator>
+ </field>
+ 
+ 
+  <field name="paymethod">
+ <field-validator type="requiredstring" >
+<message> select payment method.</message>
+  </field-validator>
+ </field>
+ 
+ <field name="depamount">
+ <field-validator type="required" >
+<message>select deposit amount.</message>
+  </field-validator>
+ </field>
+ 
+  <field name="email">
+ <field-validator type="email" >
+<message>provide email address.</message>
+  </field-validator>
+ </field>
+
+</validators>
