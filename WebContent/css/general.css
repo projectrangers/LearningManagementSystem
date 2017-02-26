@@ -1,0 +1,36 @@
+
+.errorMessage{
+	color:red;
+}
+.actionMessage{
+	color:red;
+}
+
+.banner-bg {
+    padding: 260px 80px;
+    position: relative;
+    background: url(../images/mcbair.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: 2;
+    color:white;
+}
+.banner-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(95, 109, 126, 0.4);
+    top: 0;
+    left: 0;
+    z-index: -3;
+}
+.welcome-text h2 {
+    font-size: 42px;
+    font-family: 'robotobold';
+    color: white;
+}
+.welcome-text h5 {
+    font-size: 22px;
+    color: #ffffff;
+}

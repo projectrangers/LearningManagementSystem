@@ -4,13 +4,16 @@
 <html>
 <head>
 <title>LearningManangementSystem</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" >
+<link href="css/general.css" rel="stylesheet" >
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link href="css/bootstrap.min.css" rel="stylesheet" >
-<link href="css/style.css" rel="stylesheet" >
 </head>
 <body>
+
+<!-- navbar start -->
+
 <nav class="navbar navbar-default navbar-fixed-top">
 <div class="container">
 <button type="button" class="navbar-toggle"
@@ -25,41 +28,45 @@ data-target=".navbar-collapse">
 <div class="navbar-collapse collapse">
 <ul class="nav navbar-nav navbar-right">
 <li class="active"><a href="#">HOME</a>
-<li><a href="#">ABOUT</a>
-<li><a href="#">HELP</a>
-<li><a href="#">CONTACT</a>
-
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown">COURSES<b class="caret"></b ></a>
+<ul class="dropdown-menu" width="500px">
+<%for(int j=0;j<3;j++){ %>
+<li class="dropdown-header">category</li>
+<% for(int i=0;i<=5;i++){ %>
+<li><a href="#">cat k ander</a></li>
+<%}} %>
+</ul>
+</li>
 
 
 <li class="dropdown">
-<a class="dropdown-toggle"
-data-toggle="dropdown">LOGIN
-<b class="caret"></b ></a>
-<ul class="dropdown-menu">
-<li><a href="student">STUDENT</a></li>
+<a class="dropdown-toggle" data-toggle="dropdown">LOGIN/REGISTER<b class="caret"></b ></a>
+<ul class="dropdown-menu" width="500px">
+<li><a href="student">STUDENT</a>
 <li><a href="staff">STAFF</a></li>
-<li><a href="admin">ADMIN</a></li>
+<li><a href="admin">ADMIN</a>
 </ul>
 </li>
+
+<li><a href="admin">ABOUT</a>
 </ul>
 </div>
 </div>
 </nav>
-
+<!-- banner -->
  <div class="banner-bg img-responsive" id="top">
             <div class="banner-overlay"></div>
-            <div class="welcome-text">
-                <h2>Simple Design | Personal Portfolio</h2>
-                <h5>This is a mobile friendly layout with Bootstrap v3.3.1 framework. Maecenas eu ante at nunc posuere fringilla sit amet non dolor. Proin condimentum fermentum nunc.</h5>
-            </div>
-</div>
-
-
-
-<div class="container-fluid">
-hello
-</div>
-
+                 <div class="welcome-text">
+                    <h2>Welcome to My INSTITUTE</h2>
+                    <h5>
+                        This is Reputed Institute in Greater Noida.This is Reputed Institute in Greater Noida.
+                      This is Reputed Institute in Greater Noida.This is Reputed Institute in Greater Noida.
+                    This is Reputed Institute in Greater Noida.This is Reputed Institute in Greater Noida.
+                    This is Reputed Institute in Greater Noida.This is Reputed Institute in Greater Noida.
+                    </h5>
+                  </div>
+ </div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
