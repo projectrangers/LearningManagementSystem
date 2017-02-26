@@ -3,8 +3,6 @@ package action.student;
 
 import dto.student.RegisterStudentDTO;
 
-import java.sql.SQLException;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 

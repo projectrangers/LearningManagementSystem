@@ -19,7 +19,8 @@ public class Student {
  private double dueAmount;
  private String isActive;
  private Date registered_on;
- private String password;
+ @SuppressWarnings("unused")
+private String password;
 private String isCash;
 
  private double course_fee;
