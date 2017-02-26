@@ -3,6 +3,7 @@ package action.student;
 
 import dto.student.RegisterStudentDTO;
 
+import com.database.DataBaseConnection;
 import com.opensymphony.xwork2.ActionSupport;
 
 
@@ -201,6 +202,7 @@ public void setDepamount(double depamount) {
 	public String execute() throws Exception {
 	  Boolean status=RegisterStudentDTO.doRegister(name,dob,course,qualification,mobile,email,paymethod,ddno,chekno,depamount);
 	  if(status){
+		  RegisterStudentDTO.updateAvailableSeat(course);
 		return SUCCESS;
 	     }
 	else  return ERROR;

@@ -58,6 +58,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			{
 				sessionMap.put("login","true");  
 			    sessionMap.put("email",email); 
+			    sessionMap.put("user","student");
 				return SUCCESS;
 				
 		    }else if(result==false){

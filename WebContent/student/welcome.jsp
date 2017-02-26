@@ -8,33 +8,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<style>
-.actionMessage{
-	color:red;
-}
-</style>
-<link rel="stylesheet" href="css/style.css" />
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>welcome</title>
+<title>DASHBOARD</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" >
+<link href="css/general.css" rel="stylesheet" >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>
+<jsp:include page="../includes/navbar.jsp" /> <br><br><br><br>
  <h1>STUDENT DASHBOARD</h1><hr>
 <% 
 ArrayList<Student> list;
 if(session.getAttribute("email")!=null && session!=null){
 String email=(String)session.getAttribute("email");
-   out.print("LoggedIn: "+email); 
+   //out.print("LoggedIn: "+email); 
    StudentDAO dao=new StudentDAO();
    list=dao.getStudentData(email); 
   
   %>
-
-
-
-
-
- <s:a action="logout">Logout</s:a>
- <hr>
  <h2>Profile</h2>
  Student_ID: <% out.print(list.get(0).getStudent_id()); %><br>
  StudentNAME:<% out.print(list.get(0).getName()); %><br>
@@ -98,6 +90,7 @@ for(int i=0;i<list.size();i++){
  
 
  
- 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -96,6 +96,38 @@ public class RegisterStudentDTO{
 				
 		
 	}
+
+
+
+
+
+	public static void updateAvailableSeat(String course) throws ClassNotFoundException, SQLException {
+	Connection cn=DataBaseConnection.connect();
+	String sql1="select available from courses where course_name='"+course+"'";
+	Statement st=cn.createStatement();
+	ResultSet rs1=st.executeQuery(sql1);
+	rs1.next();
+	int av=rs1.getInt("available");
+	rs1.close();
+	int status = 0;
+if(av>0){
+	av=av-1;
+    String sql="update courses set available="+av+" where course_name='"+course+"'";
+       status=st.executeUpdate(sql);
+       if(av==0){
+        	String sql2="update courses set isavailable='N' where course_name='"+course+"'";
+        	st.executeUpdate(sql2);
+        }
+}
+if(status>0){
+	System.out.println("Successfully updated!!");
+            }else
+            	System.out.println("empty seat!!!!");
+    
+	}
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		RegisterStudentDTO.updateAvailableSeat("php");
+	}
 	
 	}
 		

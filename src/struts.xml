@@ -10,9 +10,14 @@
 <action name="staff"><result>/staff/stafflogin.jsp</result> </action>
 <action name="admin"><result>/admin/adminlogin.jsp</result> </action>
 <action name="catalog"><result>/student/catalog.jsp</result></action>
-<action name="courseselected" class="action.student.CourseSelectAction">
-<result>student/register.jsp</result> </action>
+<action name="student-dashboard"><result>/student/welcome.jsp</result></action>
+<action name="staff-dashboard"><result>/staff/welcome.jsp</result></action>
+<action name="admin-dashboard"><result>/admin/welcome.jsp</result></action>
 
+
+<action name="courseselected" class="action.student.CourseSelectAction">
+<result>student/register.jsp</result> 
+</action>
 
 <action name="studentlogin" class="action.student.LoginAction">
 <result name="success">/student/welcome.jsp</result>
