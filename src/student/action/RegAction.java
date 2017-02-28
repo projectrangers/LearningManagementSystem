@@ -1,10 +1,10 @@
-package action.student;
+package student.action;
 
-
-import dto.student.RegisterStudentDTO;
 
 import com.database.DataBaseConnection;
 import com.opensymphony.xwork2.ActionSupport;
+
+import student.dto.RegisterStudentDTO;
 
 
 @SuppressWarnings("serial")

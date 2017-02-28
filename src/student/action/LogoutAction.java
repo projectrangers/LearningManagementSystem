@@ -1,4 +1,4 @@
-package action.student;
+package student.action;
 
 import org.apache.struts2.dispatcher.SessionMap;
 

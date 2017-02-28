@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="dao.student.StudentDAO"%>
+<%@page import="student.dao.StudentDAO"%>
 <%@page import="pojo.Student"%>
 <jsp:useBean id="student" class="pojo.Student"/>  
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

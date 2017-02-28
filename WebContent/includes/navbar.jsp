@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="dao.student.CourseDAO"%>
+<%@page import="student.dao.CourseDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <!-- navbar start -->

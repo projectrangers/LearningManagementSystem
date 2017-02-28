@@ -1,4 +1,4 @@
-package action.student;
+package student.action;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@taglib uri="/struts-tags" prefix="s" %>
-  <%@page import="dao.student.CourseDAO" %>
+  <%@page import="student.dao.CourseDAO" %>
   <%@page import="java.sql.ResultSet"%>
   <%@page import="java.util.ArrayList"%>
   <%@page import="pojo.Courses"%>

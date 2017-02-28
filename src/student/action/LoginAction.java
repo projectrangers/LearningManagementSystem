@@ -1,4 +1,4 @@
-package action.student;
+package student.action;
 
 import java.util.Map;
 
@@ -7,7 +7,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import dao.student.StudentAuthenticate;
+import student.dao.StudentAuthenticate;
 
 @SuppressWarnings("serial")
 public class LoginAction extends ActionSupport implements SessionAware {

@@ -1,4 +1,4 @@
-package action.student;
+package student.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 

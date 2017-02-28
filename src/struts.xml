@@ -15,28 +15,28 @@
 <action name="admin-dashboard"><result>/admin/welcome.jsp</result></action>
 
 
-<action name="courseselected" class="action.student.CourseSelectAction">
+<action name="courseselected" class="student.action.CourseSelectAction">
 <result>student/register.jsp</result> 
 </action>
 
-<action name="studentlogin" class="action.student.LoginAction">
+<action name="studentlogin" class="student.action.LoginAction">
 <result name="success">/student/welcome.jsp</result>
 <result name="error">error.jsp</result>
 <result name="input">/student/studentlogin.jsp</result>
 </action>
 
 
-<action name="regprocess" class="action.student.RegAction">
+<action name="regprocess" class="student.action.RegAction">
 <result name="success">/student/success.jsp</result>
 <result name="error">/error.jsp</result>
 <result name="input">/student/register.jsp</result>
 </action>
 
-<action name="logout" class="action.student.LogoutAction">
+<action name="logout" class="student.action.LogoutAction">
 <result name="success">/student/studentlogin.jsp</result>
 </action>
 
-<action name="changePassword" class="action.student.ChangePasswordAction">
+<action name="changePassword" class="student.action.ChangePasswordAction">
 <result name="success">/student/welcome.jsp</result>
 <result name="input">/student/welcome.jsp</result>
 </action>
