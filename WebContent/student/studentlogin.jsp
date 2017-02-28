@@ -24,7 +24,8 @@ Password<input type="password" name="password">
 <input type="submit" value="Login"/>
 </form>
 
-<s:a href="catalog">Register Here</s:a>
+<s:a action="catalog">Register Here</s:a><br>
+<s:a href="login">Not Student?</s:a>
 
 
 

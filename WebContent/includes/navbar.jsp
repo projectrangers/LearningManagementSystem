@@ -36,7 +36,7 @@ for(int j=0;j<courseList.size();j++){ %>
 
 
 <% 
-if(session.getAttribute("email")!=null && session!=null){
+if(session.getAttribute("login")!=null && session!=null){
  String email=(String)session.getAttribute("email");
  out.print("<li class='dropdown'>"+
 		 "<a class='dropdown-toggle' data-toggle='dropdown'>"+email+"<b class='caret'></b ></a>"+
@@ -50,9 +50,9 @@ if(session.getAttribute("email")!=null && session!=null){
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown">LOGIN/REGISTER<b class="caret"></b ></a>
 <ul class="dropdown-menu" width="500px">
-<li><a href="student">STUDENT</a>
-<li><a href="staff">STAFF</a></li>
-<li><a href="admin">ADMIN</a>
+<li><a href="student-login">STUDENT</a>
+<li><a href="login">STAFF</a></li>
+<li><a href="login">ADMIN</a>
 </ul>
 </li>
 

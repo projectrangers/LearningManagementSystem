@@ -1,4 +1,4 @@
-package student.action;
+package admin.action;
 
 import java.util.Map;
 
@@ -7,23 +7,16 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import admin.DAO.AdminAuthentication;
 import student.dao.StudentAuthentication;
 
 @SuppressWarnings("serial")
-public class LoginAction extends ActionSupport implements SessionAware {
+public class LoginAction extends ActionSupport implements SessionAware{
+	
 	private SessionMap<String,Object> sessionMap; 
-	private String email;
+	private String email ;
 	private String password;
-	//VALIDATION
-	/*@Override
-	public void validate() {
-		if(email.isEmpty()){
-			addFieldError("email", "email cant be empty");
-		}
-		if(password.isEmpty()){
-			addFieldError("password", "password cant be empty");
-		}
-	}*/
+	
 	
 	
 	
@@ -52,29 +45,21 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	//EXECUTE
 		@Override
 		public String execute() throws Exception {
-			StudentAuthentication val=new StudentAuthentication();
+			AdminAuthentication val=new AdminAuthentication();
 			Boolean result=val.validate(email,password);
 			if(result==true)
 			{
 				sessionMap.put("login","true");  
-			    sessionMap.put("username",email);
-			    sessionMap.put("email",email); 
-			    sessionMap.put("user","student");
+			    sessionMap.put("email","ADMIN");
+			    sessionMap.put("user","admin");
 				return SUCCESS;
 				
 		    }else if(result==false){
-		    	addFieldError("message","Invalid username or Password");
+		    	addFieldError("message","Invalid email or Password");
 		    	return INPUT;
 		    }
 		    else return ERROR;
 		}
 		
-		/*public String logout(){  
-		    if(sessionMap!=null){  
-		        sessionMap.invalidate();  
-		    }  
-		    return SUCCESS;  
-}*/
-	
 
 }
