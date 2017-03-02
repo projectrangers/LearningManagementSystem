@@ -16,11 +16,16 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>
+
 <jsp:include page="../includes/navbar.jsp" /> <br><br><br><br>
+
+
  <h1>STUDENT DASHBOARD</h1><hr>
 <% 
 ArrayList<Student> list;
+
 if(session.getAttribute("email")!=null && session!=null){
+	if(session.getAttribute("user").equals("student")){
 String email=(String)session.getAttribute("email");
    //out.print("LoggedIn: "+email); 
    StudentDAO dao=new StudentDAO();
@@ -43,11 +48,11 @@ String email=(String)session.getAttribute("email");
 </s:if>
 <s:fielderror name="mesage"></s:fielderror>
 
- <form action="changePassword" method="post">
+ <form action="changePassword" method="post" >
 <input type="password" name="oldPassword" placeholder="old password">
  <input type="password" name="newPassword" placeholder="new password">
  <input type="hidden" name="email" value="<% out.print(list.get(0).getEmail()); %>">
-<input type="submit">
+<input type="submit" onclick="return confirm('Are you sure?')">
 </form>
 
 <hr>
@@ -84,7 +89,9 @@ for(int i=0;i<list.size();i++){
 
 <%
 } else 
-  response.sendRedirect("studentlogin.jsp"); %>
+	response.sendRedirect("error.jsp?message=Sorry You are Not authorized to view this Page");
+} else 
+  response.sendRedirect("student-login?message=Please Login First");  %>
  
  
 

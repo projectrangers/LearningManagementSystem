@@ -6,19 +6,19 @@
 
 <package name="default" extends="struts-default">
 <action name="home"><result>index.jsp</result> </action>
+<action name="error"><result>/error.jsp</result> </action>
 <action name="student-login"><result>/student/studentlogin.jsp</result> </action>
-<action name="login"><result>staff/login.jsp</result> </action>
+<action name="admin-login"><result>/admin/login.jsp</result> </action>
+<action name="staff-login"><result>/staff/login.jsp</result> </action>
 <action name="catalog"><result>/student/catalog.jsp</result></action>
+<action name="admin-dashboard"><result>/admin/dashboard.jsp</result></action>
 <action name="student-dashboard"><result>/student/welcome.jsp</result></action>
 <action name="staff-dashboard"><result>/staff/dashboard.jsp</result></action>
-<action name="admin-dashboard"><result>/admin/dashboard.jsp</result></action>
-
-
 <action name="courseselected" class="student.action.CourseSelectAction">
 <result>student/register.jsp</result> 
 </action>
 
-<action name="studentlogin" class="student.action.LoginAction">
+<action name="student" class="student.action.LoginAction">
 <result name="success">/student/welcome.jsp</result>
 <result name="error">error.jsp</result>
 <result name="input">/student/studentlogin.jsp</result>
@@ -40,15 +40,35 @@
 <result name="input">/student/welcome.jsp</result>
 </action>
 
-
-
-<!-- STUEDNT END -->
-
-<action name="adminlogin" class="admin.action.LoginAction">
+<action name="admin" class="admin.action.LoginAction">
 <result name="success">/admin/dashboard.jsp</result>
 <result name="error">/error.jsp</result>
-<result name="input">/staff/login.jsp</result>
+<result name="input">/admin/login.jsp</result>
 </action>
+
+<action name="change-password" class="admin.action.ChangePasswordAction">
+<result name="success">/admin/dashboard.jsp</result>
+<result name="input">/admin/dashboard.jsp</result>
+</action>
+
+<action name="courseList"><result>/admin/showCourseList.jsp</result></action>
+
+<action name="deleteCourse" class="admin.action.UpdateCourseAction" method="delete">
+<result name="success">/admin/showCourseList.jsp</result>
+<result name="input">/admin/showCourseList.jsp</result>
+<result name="error">/error.jsp</result>
+</action>
+
+<action name="details"><result>/admin/editcourse.jsp</result></action>
+<action name="edit"><result>/admin/editcourse.jsp</result></action>
+
+<action name="editcourse" class="admin.action.UpdateCourseAction" method="edit">
+<result name="success">/admin/showCourseList.jsp</result>
+<result name="input">/admin/showCourseList.jsp</result>
+<result name="error">/error.jsp</result>
+</action>
+
+<action name="addnewcourse"><result>/admin/addcourse.jsp</result></action>
 
 
 

@@ -4,8 +4,11 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import xtra.EnrollmentFor;
 
-@SuppressWarnings("serial")
 public class CourseSelectAction extends ActionSupport {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private double fee;
 	

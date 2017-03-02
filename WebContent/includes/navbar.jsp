@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="student.dao.CourseDAO"%>
+<%@page import="generalDAO.CourseDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <!-- navbar start -->
@@ -19,7 +19,7 @@ data-target=".navbar-collapse">
 <ul class="nav navbar-nav navbar-right">
 <li class="active"><a href="home">HOME</a>
 <li class="dropdown">
-<a class="dropdown-toggle" data-toggle="dropdown">COURSES<b class="caret"></b ></a>
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">Courses<b class="caret"></b ></a>
 <ul class="dropdown-menu" width="500px">
 <%
 ArrayList<String> catList=CourseDAO.getCourseCategories();
@@ -39,7 +39,7 @@ for(int j=0;j<courseList.size();j++){ %>
 if(session.getAttribute("login")!=null && session!=null){
  String email=(String)session.getAttribute("email");
  out.print("<li class='dropdown'>"+
-		 "<a class='dropdown-toggle' data-toggle='dropdown'>"+email+"<b class='caret'></b ></a>"+
+		 "<a class='dropdown-toggle' data-toggle='dropdown' href='#'>"+email+"<b class='caret'></b ></a>"+
 		 "<ul class='dropdown-menu' width='500px'>"+
 		"<li><a href='"+session.getAttribute("user").toString()+"-dashboard'>DASHBOARD</a>"+
 		 "<li><a href='logout'>LOGOUT</a>"+
@@ -48,11 +48,11 @@ if(session.getAttribute("login")!=null && session!=null){
   %>
 
 <li class="dropdown">
-<a class="dropdown-toggle" data-toggle="dropdown">LOGIN/REGISTER<b class="caret"></b ></a>
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">LOGIN/REGISTER<b class="caret"></b ></a>
 <ul class="dropdown-menu" width="500px">
 <li><a href="student-login">STUDENT</a>
-<li><a href="login">STAFF</a></li>
-<li><a href="login">ADMIN</a>
+<li><a href="staff-login">STAFF</a></li>
+<li><a href="admin-login">ADMIN</a>
 </ul>
 </li>
 

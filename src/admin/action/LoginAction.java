@@ -8,7 +8,6 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 
 import admin.DAO.AdminAuthentication;
-import student.dao.StudentAuthentication;
 
 @SuppressWarnings("serial")
 public class LoginAction extends ActionSupport implements SessionAware{
@@ -16,8 +15,6 @@ public class LoginAction extends ActionSupport implements SessionAware{
 	private SessionMap<String,Object> sessionMap; 
 	private String email ;
 	private String password;
-	
-	
 	
 	
 	//GETTER AND SETTERS
@@ -60,6 +57,5 @@ public class LoginAction extends ActionSupport implements SessionAware{
 		    }
 		    else return ERROR;
 		}
-		
-
+	
 }

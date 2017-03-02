@@ -12,7 +12,7 @@ public class AdminAuthentication {
 
 	public Boolean validate(String email,String password) throws ClassNotFoundException, SQLException {
 	Connection cn=DataBaseConnection.connect();
-	String sql="select * from staffdb where staff_email=? AND staff_password=? AND staff_role='admin'";
+	String sql="select * from staff where staff_email=? AND staff_password=? AND staff_role='admin'";
 	PreparedStatement st=cn.prepareStatement(sql);
 	st.setString(1, email);
 	st.setString(2, password);

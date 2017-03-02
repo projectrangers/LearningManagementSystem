@@ -1,4 +1,4 @@
-package student.dao;
+package generalDAO;
 
 import java.sql.Connection;
 import pojo.Courses;

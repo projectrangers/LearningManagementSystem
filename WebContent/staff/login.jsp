@@ -18,7 +18,7 @@
 <body>
 <jsp:include page="../includes/navbar.jsp" /><br><br><br><br>
 <s:fielderror name="message"></s:fielderror>
-<form action="adminlogin" method="post">
+<form action="staff" method="post">
 Email:<input type="email" name="email"> 
 Password:<input type="password" name="password">
 <input type="submit" value="Login"/>

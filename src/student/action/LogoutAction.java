@@ -18,6 +18,7 @@ public class LogoutAction extends ActionSupport {
 			
 			SessionMap<String, Object> ses=(SessionMap<String, Object>) ActionContext.getContext().getSession();
 			ses.invalidate();
+			addFieldError("message", msg);
 			return SUCCESS;
 		}
 

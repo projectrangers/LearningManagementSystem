@@ -2,8 +2,9 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <% if(session.getAttribute("login")!=null){
-	RequestDispatcher rd=request.getRequestDispatcher("welcome.jsp");
-	rd.forward(request, response);
+/*     RequestDispatcher rd=request.getRequestDispatcher("error");
+	rd.forward(request, response);  */
+	response.sendRedirect("student-dashboard");
 } %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,14 +19,15 @@
 <body>
 <jsp:include page="../includes/navbar.jsp" /><br><br><br><br>
 <s:fielderror name="message"></s:fielderror>
-<form action="studentlogin" method="post">
+<%if(request.getParameter("message")!=null) out.print("<strong style='color:red'>"+request.getParameter("message")+"</strong>");  %>
+<form action="student" method="post">
 Email:<input type="email" name="email"> 
 Password<input type="password" name="password">
 <input type="submit" value="Login"/>
 </form>
 
 <s:a action="catalog">Register Here</s:a><br>
-<s:a href="login">Not Student?</s:a>
+<s:a href="staff-login">Not Student?</s:a>
 
 
 
