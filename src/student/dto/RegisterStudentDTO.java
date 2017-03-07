@@ -13,12 +13,17 @@ public class RegisterStudentDTO{
 
 	public static Boolean doRegister(String name, String dob, String course, String qualification, String mobile,
 			String email, String paymethod, String ddno, String chekno, double depamount) throws ClassNotFoundException, SQLException {
-	
+		double dueamount=0;
+		int status = 0;
+		
 		Connection cn=DataBaseConnection.connect();
+		
   String sql="INSERT INTO student (name,dob,course_enrolled, qualification,mobile,"
   		+ " email,paymentmethod,ddno,chekno,iscash,amtpaymented,isdue,dueamount,isactive,password)"
   		+ " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		PreparedStatement ps=cn.prepareStatement(sql);
+  PreparedStatement ps=cn.prepareStatement(sql);
+	try{	
+		
 		ps.setString(1,name);
 		ps.setString(2,dob);
 		ps.setString(3,course);
@@ -36,9 +41,9 @@ public class RegisterStudentDTO{
 		
 		ps.setString(10,iscash);
 		ps.setDouble(11,depamount);
-		int status = 0;
+		
 		 String isdue="No";
-	     double dueamount=getFee(depamount);
+	     dueamount=getFee(depamount);
 	     if(dueamount>0){
 	    	 isdue="Yes";
 	     }
@@ -48,7 +53,10 @@ public class RegisterStudentDTO{
 		ps.setString(14,"yes");
 		
 		ps.setString(15,"12345");
-		
+	}catch(Exception e){
+		System.out.println(e.toString());
+		return false;
+	}
 		
 		try{
 			if(dueamount>=0)
@@ -56,7 +64,7 @@ public class RegisterStudentDTO{
 			else return false;   //send to errorr page
 			
 			}catch(MySQLIntegrityConstraintViolationException e){
-				System.out.println(e.getMessage());           //FOR TEST
+				return false;          //FOR TEST
 			}
 			if(status!=0){
 				ps.close();

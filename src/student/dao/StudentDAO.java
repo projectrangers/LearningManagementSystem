@@ -22,7 +22,7 @@ String sql="SELECT *"+
 " LEFT JOIN student_notification n"+
 " ON s.student_id=n.notification_id"+
 " where email='"+email+"'";
-
+System.out.println(sql);
 ArrayList<Student> list=new ArrayList<>();
 Statement st=cn.createStatement();
 ResultSet rs=st.executeQuery(sql);
@@ -59,16 +59,58 @@ cn.close();
 return list;
 	}
 
+public ArrayList<Student> getStudentList() throws ClassNotFoundException, SQLException{
+Connection cn=	DataBaseConnection.connect();
+String sql="SELECT * FROM student group by name ASC ";
+
+ArrayList<Student> list=new ArrayList<>();
+Statement st=cn.createStatement();
+ResultSet rs=st.executeQuery(sql);
+while(rs.next())
+{
+Student student=new Student();
+student.setStudent_id(rs.getInt("student_id"));
+student.setName(rs.getString("name"));
+student.setEmail(rs.getString("email"));
+student.setIsDue(rs.getString("isdue"));
+student.setIsActive(rs.getString("isactive"));
+list.add(student);
+}
+rs.close();
+st.close();
+cn.close();
+return list;
+	}
+
+public static int countStudent() throws ClassNotFoundException, SQLException{
+	int count = 0;
+	Connection cn=	DataBaseConnection.connect();
+	String sql="SELECT count(*) as count from student";
+	Statement st=cn.createStatement();
+	ResultSet rs=st.executeQuery(sql);
+	rs.next();
+	count=rs.getInt("count");
+	rs.close();
+	st.close();
+	cn.close();
+	return count;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 	//testing---OKKK
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		ArrayList<Student> list=new ArrayList<>();
 		StudentDAO dao=new StudentDAO();
-		list= dao.getStudentData("1@2.com");
-		for(int i=0;i<list.size();i++){
-			 System.out.println("dekh bhai............"+list.get(i).getAmountpaid());
-		}
-		/*StudentDAO dao=new StudentDAO();
-		 Student s= dao.getStudentData("kunal@gmail.com");
-	 	  System.out.println("dekh bhai............"+s.getMessage());*/
+		 ArrayList<Student> s= dao.getStudentData("kapala@gmail.com");
+	 	  System.out.println("dekh bhai............"+s.get(0).getAmountpaid());
 	}
 }

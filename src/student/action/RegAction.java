@@ -200,9 +200,17 @@ public void setDepamount(double depamount) {
 
 	@Override
 	public String execute() throws Exception {
-	  Boolean status=RegisterStudentDTO.doRegister(name,dob,course,qualification,mobile,email,paymethod,ddno,chekno,depamount);
-	  if(status){
-		  RegisterStudentDTO.updateAvailableSeat(course);
+		Boolean status = false;
+		try{
+	  status=RegisterStudentDTO.doRegister(name,dob,course,qualification,mobile,email,paymethod,ddno,chekno,depamount);
+		}catch(Exception e){
+			System.out.println("this is"+e.toString());
+			addFieldError("message", "DUPLICATE ENTRY");
+			return ERROR;
+		}
+		
+		if(status){
+		 // RegisterStudentDTO.updateAvailableSeat(course);
 		return SUCCESS;
 	     }
 	else  return ERROR;

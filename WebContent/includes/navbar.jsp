@@ -1,5 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="generalDAO.CourseDAO"%>
+<%@page import="generalDAO.CategoryDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <!-- navbar start -->
@@ -22,7 +23,7 @@ data-target=".navbar-collapse">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Courses<b class="caret"></b ></a>
 <ul class="dropdown-menu" width="500px">
 <%
-ArrayList<String> catList=CourseDAO.getCourseCategories();
+ArrayList<String> catList=CategoryDAO.getCourseCategories();
 for(int i=0;i<catList.size();i++){ %>
 <li class="dropdown-header"><%=catList.get(i) %></li>
 <%

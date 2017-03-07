@@ -24,40 +24,17 @@ if(session.getAttribute("login")==null)
 </head>
 <body>
 <jsp:include page="../includes/navbar.jsp" /> <br><br><br><br>
-<% ArrayList<String> l=CategoryDAO.getCourseCategories();%>
 <s:fielderror name="message"></s:fielderror>
 
-<form action="add" method="post" >
-NAME:<input name="courseName" type="text" required>
-<br>CATEGORY:
-<select name="course_category" required>
-<% 
-for(int j=0;j<l.size();j++){%>
-<option ><%=l.get(j).toUpperCase()%></option>
-<%} %>
+<form action="addCategory" method="post" >
+<input type="text" name="name" required="required" placeholder="category name">
+<select required="required" name="isactive">
+<option value="y">Keep ACTIVE</option>
+<option value="n">Keep DEACTIVE</option>
 </select>
-<br>TOTAL SEAT:
-<input name="total"  required>
-
-
-<br>AVAILABLE SEAT:
-<input name="available" required>
-
-<br>IS AVAILABLE:
-
-<select name="is_available" required>
-<option>Y</option>
-<option>N</option>
-</select>
-
-<br>DURATION:
-<input name="duration" required>
-
-<br>FEE:
-<input name="fee" required >
-<br><input type="submit" value="ADD">
+<button class="btn-info btn">SAVE</button>
 </form>
-
+<a href="categoryList">Back to category List</a>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>

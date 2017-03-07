@@ -13,7 +13,20 @@
 </head>
 <body>
 <jsp:include page="../includes/navbar.jsp" /> <br><br><br><br>
-SUCCESSFULLY REGISTERED!!
+
+ <h1>SUCCESSFULLY REGISTERD</h1>
+  DEFAULT PASSWORD IS :12345
+  <br><h5>IMPORTANT:</h5>PLEASE LOGIN AND CHANGE YOUR PASSWORD!!!!!
+<% 
+
+if(session.getAttribute("email")!=null && session!=null){
+	if(session.getAttribute("user").equals("admin")){
+
+  %>
+ 
+  <h2><a href="catalog">ADD MORE</a></h2>
+  <%}}%>
+  
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

@@ -35,7 +35,8 @@ String email=(String)session.getAttribute("email");
  <h2>Profile</h2>
  Student_ID: <% out.print(list.get(0).getStudent_id()); %><br>
  StudentNAME:<% out.print(list.get(0).getName()); %><br>
- DATE OF BIRTH:<% out.print(list.get(0).getQualification()); %><br>
+ DOB:<% out.print(list.get(0).getDob()); %><br>
+ QUALIFIACATION:<% out.print(list.get(0).getQualification()); %><br>
  MOBILE:<% out.print(list.get(0).getMobile()); %><br>
  EMAIL:<% out.print(list.get(0).getEmail()); %><br>
  Active:<% out.print(list.get(0).getIsActive()); %><br>

@@ -70,8 +70,51 @@
 
 <action name="addnewcourse"><result>/admin/addcourse.jsp</result></action>
 
+<action name="add" class="admin.action.UpdateCourseAction" method="addCourse">
+<result name="success">/admin/addcourse.jsp</result>
+<result name="error">error.jsp</result>
+<result name="input">/admin/addcourse.jsp</result>
+</action>
+
+<action name="categoryList"><result>/admin/showCatList.jsp</result></action>
+<action name="addnewcategory"><result>/admin/addcategory.jsp</result></action>
+
+<action name="editSuccess" class="admin.action.UpdateCategoryAction" method="edit">
+<result name="success">/admin/showCatList.jsp</result>
+<result name="error">/error.jsp</result>
+<result name="input">/admin/showCatList.jsp</result>
+</action>
+
+<action name="addCategory" class="admin.action.UpdateCategoryAction" method="add">
+<result name="success">/admin/addcategory.jsp</result>
+<result name="error">/error.jsp</result>
+<result name="input">/admin/addcategory.jsp</result>
+</action>
 
 
+<action name="showStudentList" class="admin.action.ShowStudentAction" method="execute">
+<result name="success">/admin/showStudentList.jsp</result>
+</action>
+
+<action name="getStudent"><result>/admin/studentDetails.jsp</result></action>
+
+<action name="deleteStudent" class="admin.action.UpdateStudentAction" method="delete">
+<result name="success">/admin/showStudentList.jsp</result>
+<result name="input">/admin/showStudentList.jsp</result>
+<result name="error">/error.jsp</result>
+</action>
+
+<action name="deactiveStudent" class="admin.action.UpdateStudentAction" method="deactivate">
+<result name="success">/admin/showStudentList.jsp</result>
+<result name="input">/admin/showStudentList.jsp</result>
+<result name="error">/error.jsp</result>
+</action>
+
+<action name="activateStudent" class="admin.action.UpdateStudentAction" method="activate">
+<result name="success">/admin/showStudentList.jsp</result>
+<result name="input">/admin/showStudentList.jsp</result>
+<result name="error">/error.jsp</result>
+</action>
 
 </package>
 

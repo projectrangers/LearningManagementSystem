@@ -17,6 +17,7 @@ import pojo.Courses;
  * @author inayat
  *
  */
+@SuppressWarnings("serial")
 public class UpdateCourseAction extends ActionSupport {
       
 	private String courseName;
@@ -143,8 +144,49 @@ public class UpdateCourseAction extends ActionSupport {
 		
 	}
 	
-	public String fetchDetail() throws ClassNotFoundException, SQLException{
+	/*public String fetchDetail() throws ClassNotFoundException, SQLException{
 		Courses c=CourseDAO.getCourseDetailByName(courseName);
 		return null;
+	}*/
+	public String addCourse() throws ClassNotFoundException, SQLException{
+		Connection cn=DataBaseConnection.connect();
+		String sql="INSERT INTO courses(course_name,category,available,total,isavailable,duration,fee)"+
+		"values(?,?,?,?,?,?,?)";
+		 /*  System.out.println("name=+"+courseName);
+		   System.out.println("name=+"+course_category);
+		   System.out.println("name=+"+available);                  //testing...........
+		   System.out.println("name=+"+total);
+		   System.out.println("name=+"+is_available);
+		   System.out.println("name=+"+duration);
+		   System.out.println("name=+"+fee);*/
+	   PreparedStatement st=cn.prepareStatement(sql);
+	   st.setString(1,courseName);
+	   st.setString(2, course_category);
+	   st.setInt(3, available);
+	   st.setInt(4, total);
+	   st.setString(5, is_available);
+	   st.setString(6,duration);
+	   st.setDouble(7, fee);
+	   int i=0;
+	   try{
+	  i=st.executeUpdate();
+	   }catch(Exception e){
+		   addFieldError("message","NAME already exist");
+		    return INPUT;
+	   }
+	    st.close();
+	    cn.close();
+	 
+	    if(i>0){
+		addFieldError("message","New Course added!");
+		return SUCCESS;
+	    }else if(i==0){
+	    	addFieldError("message","TRY PROVIDING UNIQUE COURSE NAME!!!");
+	    return INPUT;
+	    }else{
+	    	addFieldError("message","SOME ERROR OCUURED");
+	    	return ERROR;
+	    }
+	    	
 	}
 }

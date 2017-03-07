@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.apache.struts2.interceptor.CreateSessionInterceptor;
+
 import com.database.DataBaseConnection;
 
 public class CourseDAO {
@@ -34,7 +36,7 @@ public class CourseDAO {
 	    return list;
 	    }
 	
-	public static ArrayList<String> getCourseCategories() throws ClassNotFoundException, SQLException{
+/*	public static ArrayList<String> getCourseCategories() throws ClassNotFoundException, SQLException{
 	 ArrayList<String> catList=new ArrayList<>();
 	        Connection cn=DataBaseConnection.connect();
 	       
@@ -48,9 +50,8 @@ public class CourseDAO {
 		    rs.close();
 		    st.close();
 		    cn.close();
-		    return catList;
-		    
-	}
+		    return catList;	    
+	}*/
 public static ArrayList<String> getCoursesByCategory(String category) throws SQLException, ClassNotFoundException{
 	 ArrayList<String> list=new ArrayList<>();
      Connection cn=DataBaseConnection.connect();
@@ -91,19 +92,29 @@ public static Courses getCourseDetailByName(String courseName) throws ClassNotFo
 	    return courseDetail;
 }
 
-//testing
-	
-/*public static void main(String[] args) throws ClassNotFoundException, SQLException {
- ArrayList<String> list=  CourseDAO.getCoursesByCategory("program");
- int i=0;
- while(i<list.size()){
- System.out.println(list.get(i));
- i++;
+public static int countCourse() throws ClassNotFoundException, SQLException{
+Connection cn=	DataBaseConnection.connect();
+String sql="select count(*) as count from courses";
+Statement st=cn.createStatement();
+ResultSet rs=st.executeQuery(sql);
+rs.next();
+int i= rs.getInt("count");
+rs.close();
+st.close();
+cn.close();
+
+return i;
 }
- Courses c=CourseDAO.getCourseDetailByName("cpp");
- System.out.println(c.getDuration());
+
+
+
+//testing	
+public static void main(String[] args) throws ClassNotFoundException, SQLException {
+
+
+ System.out.println(CourseDAO.countCourse());
 }
-*/
+
 
 
 }

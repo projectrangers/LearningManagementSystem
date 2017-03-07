@@ -1,5 +1,6 @@
 
 <%@page import="generalDAO.CourseDAO"%>
+<%@page import="generalDAO.CategoryDAO"%>
 <%@page import="pojo.Courses"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -15,38 +16,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<script>
-function setedible(id){
-   document.getElementById(id).readOnly=false;
-   document.getElementById(id).focus();
-}
 
-function makeReadOnly(id){
-	document.getElementById(id).readOnly=true;
-}
-
-function activatesave(){
-	document.getElementById("save").disabled=false;
-	  document.getElementById("save").style.visibility="visible";
-}
-
-function disablesavebutton(){
-	document.getElementById("save").style.visibility="hidden";
-}
-
-function setcategoryvalue(id) {
-var x=document.getElementById(id).value;
-document.getElementById("catfield").value=x; 
-activatesave();
-}
-function setIsAvalue(id) {
-	var x=document.getElementById(id).value;
-	alert("slect option value:"+x);
-	document.getElementById("isafield").value=x; 
-	activatesave();
-	}
-
-</script>
 
 </head>
 
@@ -71,14 +41,14 @@ function setIsAvalue(id) {
                        <ul class="list-group">
                          
  <% ArrayList<Courses> course=CourseDAO.getCourses();
- ArrayList<String> l=CourseDAO.getCourseCategories();
+ ArrayList<String> l=CategoryDAO.getCourseCategories();
  for(int i=0;i<course.size();i++){
  %>  
  
  <li class="list-group-item">
    <div class="col-sm-3"> <%=course.get(i).getCourse_name() %></div> 
-    	<span class="badge"><%=course.get(i).getCategory() %></span>
-             <a onclick="return confirm('Are you sure?')" href="deleteCourse?courseName=<%=course.get(i).getCourse_name()  %>">
+    	     <span class="badge"><%=course.get(i).getCategory() %></span>
+              <a onclick="return confirm('Are you sure?')" href="deleteCourse?courseName=<%=course.get(i).getCourse_name()  %>">
                <button class="btn btn-danger btn-xs">Delete</button>
               </a>
                 <button onclick="disablesavebutton()" class="btn btn-primary btn-xs" data-toggle="collapse" data-target="#<%=i %>">Edit</button>
@@ -154,7 +124,7 @@ value="<%=c.getFee() %>"/>
 href="#" id="fee<%=i%>" onclick="setedible(this.id)">
 <i class="glyphicon glyphicon-edit"></i></a><br>
 
-<input type="submit" disabled="disabled" id="save" value="SAVE" on>
+<input type="submit" disabled="disabled" id="save" value="SAVE" >
 </form>
     	              
     	</div>
@@ -172,7 +142,41 @@ href="#" id="fee<%=i%>" onclick="setedible(this.id)">
   
 
 
+<script>
+function setedible(id){
+   document.getElementById(id).readOnly=false;
+   document.getElementById(id).focus();
+}
 
+function makeReadOnly(id){
+	document.getElementById(id).readOnly=true;
+}
+
+function activatesave(){
+	document.getElementById("save").disabled=false;
+	  document.getElementById("save").style.visibility="visible";
+}
+
+function disablesavebutton(){
+	document.getElementById("save").style.visibility="hidden";
+}
+
+function setcategoryvalue(id) {
+var x=document.getElementById(id).value;
+document.getElementById("catfield").value=x; 
+activatesave();
+}
+
+function setIsAvalue(id) {
+	var x=document.getElementById(id).value;
+	document.getElementById("isafield").value=x; 
+	activatesave();
+	}
+
+function setEnable(id){
+	document.getElementById(id).disabled=false;
+}
+</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
