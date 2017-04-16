@@ -28,9 +28,18 @@ private String isCash;
  private String course_duration;
  private String course_name;
  private String message;
+ private Date MessageTime;
  
  
- public String getMessage() {
+ 
+
+public Date getMessageTime() {
+	return MessageTime;
+}
+public void setMessageTime(Date messageTime) {
+	MessageTime = messageTime;
+}
+public String getMessage() {
 	return message;
 }
 public void setMessage(String message) {

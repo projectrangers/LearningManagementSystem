@@ -95,7 +95,13 @@ public class UpdateCourseAction extends ActionSupport {
 		Connection cn=DataBaseConnection.connect();
 		String sql="delete from courses where course_name='"+courseName+"'";
 	    Statement st=	cn.createStatement();
-	    int i=st.executeUpdate(sql);
+	    int i=0;
+	    try{
+	    i=st.executeUpdate(sql);
+	    }catch(Exception e){
+	    	addFieldError("message","course cannot be deleted because some students are enrolled in this course.Unenroll all student under this course before deletion!!");
+			return INPUT;
+	    }
 	    st.close();
 	     cn.close();
 		if(i>0){

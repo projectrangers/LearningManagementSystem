@@ -4,21 +4,26 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <!-- navbar start -->
-
-<nav class="navbar navbar-default navbar-fixed-top">
-<div class="container">
-<button type="button" class="navbar-toggle"
-data-toggle="collapse"
-data-target=".navbar-collapse">
-<span class="sr-only">Toggle Navigation</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
-<a href="#" class="navbar-brand">My Institute</a>
-<div class="navbar-collapse collapse">
-<ul class="nav navbar-nav navbar-right">
-<li class="active"><a href="home">HOME</a>
+	<header>		
+		<nav class="navbar navbar-default navbar-fixed-top " role="navigation">
+			<div class="navigation">
+				<div class="container">					
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<div class="navbar-brand">
+							<a href="home"><h1><span>Learning</span>System</h1></a>
+						</div>
+					</div>
+					
+					<div class="navbar-collapse collapse">							
+						<div class="menu">
+							<ul class="nav nav-tabs" role="tablist">
+								<li role="presentation"><a href="home" class="active">Home</a></li>
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Courses<b class="caret"></b ></a>
 <ul class="dropdown-menu" width="500px">
@@ -36,13 +41,13 @@ for(int j=0;j<courseList.size();j++){ %>
 
 
 
-<% 
+<%
 if(session.getAttribute("login")!=null && session!=null){
  String email=(String)session.getAttribute("email");
  out.print("<li class='dropdown'>"+
 		 "<a class='dropdown-toggle' data-toggle='dropdown' href='#'>"+email+"<b class='caret'></b ></a>"+
 		 "<ul class='dropdown-menu' width='500px'>"+
-		"<li><a href='"+session.getAttribute("user").toString()+"-dashboard'>DASHBOARD</a>"+
+		"<li ><a href='"+session.getAttribute("user").toString()+"-dashboard'>DASHBOARD</a>"+
 		 "<li><a href='logout'>LOGOUT</a>"+
 		 "</ul>");
  }else{
@@ -51,20 +56,26 @@ if(session.getAttribute("login")!=null && session!=null){
 <li class="dropdown">
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">LOGIN/REGISTER<b class="caret"></b ></a>
 <ul class="dropdown-menu" width="500px">
-<li><a href="student-login">STUDENT</a>
-<li><a href="staff-login">STAFF</a></li>
-<li><a href="admin-login">ADMIN</a>
+<li role="presentation"><a href="student-login">STUDENT</a>
+<li role="presentation"><a href="staff-login">STAFF</a></li>
+<li role="presentation"><a href="admin-login">ADMIN</a></li>
 </ul>
 </li>
 
 <%} %>
+<li role="presentation" ><a href="about">ABOUT</a></li>	
+					
+					
+												
+							</ul>
+							
+						
+						
+						</div>
+					</div>						
+				</div>
+			</div>	
+		</nav>		
+	</header>
 
 
-
-
-
-<li><a href="about.jsp">ABOUT</a>
-</ul>
-</div>
-</div>
-</nav>

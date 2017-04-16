@@ -4,33 +4,49 @@
     <%@page import="java.util.ArrayList" %>
     <%@page import="pojo.Student" %>
     <%@taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<link href="css/general.css" rel="stylesheet" >
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>StudentList</title>
-<style>
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 5px;
-}
-</style>
-<script type="text/javascript">
-function printAction(){
-	window.print();
-}
-</script>
-</head>
-<body>
- <button class="btn btn-info" onclick="printAction()">Print</button>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>StudentList</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link href="css/prettyPhoto.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet" />
+	<style>
+	.lbl{
+	font-weight: bold;
+	font-color:black;
+	}
+	</style>
+  </head>
+  <body>
+<jsp:include page="../includes/navbar.jsp" />
+<div id="breadcrumb">
+		<div class="container">	
+			<div class="breadcrumb">							
+				<li><a href="home">Home</a></li>
+				<li>Admin</li>
+				<li><a href="admin-dashboard">Dashboard</a></li>
+				<li>Student LIST</li>				
+			</div>		
+		</div>	
+</div>
+
+
 <% StudentDAO dao=new StudentDAO();
 ArrayList<Student> list= dao.getStudentList(); %>
-<s:fielderror name="message"></s:fielderror>
-<table width="50%">
+
+<div class="container">
+<h1 class="list-group-item-info">STUDENT LIST</h1><h4 style="color:red"><s:fielderror name="message"></s:fielderror></h4>
+<div class="table-responsive">
+<table class="table ">
+<thead class=" btn-primary">
 <tr>
 <th>S.No.</th>
 <th>ID</th>
@@ -41,7 +57,10 @@ ArrayList<Student> list= dao.getStudentList(); %>
 <th>FULL DETAILS</th>
 <th>DELETE</th>
 <th>Status</th>
+<th>Send Message</th>
 </tr>
+</thead>
+ <tbody class="btn-info">
 <%for(int i=0;i<list.size();i++){ %>
 <tr>
 <td><%=i+1 %></td>
@@ -50,19 +69,106 @@ ArrayList<Student> list= dao.getStudentList(); %>
 <td><%=list.get(i).getEmail() %></td>
 <td><%=list.get(i).getIsDue() %></td>
 <td><%=list.get(i).getIsActive() %></td>
-<td><a href="getStudent?id=<%=list.get(i).getEmail() %>">SHOW</a></td>
-<td><a href="deleteStudent?id=<%=list.get(i).getEmail() %>" onclick="return confirm('ARE YOU SURE??')">DELETE</a></td>
-<td>
+<td><a class="btn btn-warning" href="getStudent?id=<%=list.get(i).getEmail() %>">SHOW</a></td>
+<td><a class="btn btn-danger" href="deleteStudent?id=<%=list.get(i).getEmail() %>" onclick="return confirm('ARE YOU SURE??')">DELETE</a></td>
+
 <%if(list.get(i).getIsActive().toString().equalsIgnoreCase("yes")){%>
-<a href="deactiveStudent?id=<%=list.get(i).getEmail() %>" onclick="return confirm('ARE YOU SURE??')">Deactivate</a></td>
+<td><a class="btn btn-info" href="deactiveStudent?id=<%=list.get(i).getEmail() %>" onclick="return confirm('ARE YOU SURE??')">Deactivate</a></td>
 <%}else{ %>
-<a href="activateStudent?id=<%=list.get(i).getEmail() %>" onclick="return confirm('ARE YOU SURE??')">Activate</a></td>
+<td><a class="btn btn-success" href="activateStudent?id=<%=list.get(i).getEmail() %>" onclick="return confirm('ARE YOU SURE??')">Activate</a></td>
 <%} %>
+
+<td><a class="btn btn-default" data-toggle="modal" data-target="#<%=i%>" >SEND</a></td>
 </tr>
+
+<!--Message Modal -->
+<div id="<%=i %>"  class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Send Message TO, <%=list.get(i).getName().toUpperCase() %></h4>
+        
+      </div>
+      <div class="modal-body">
+     <form action="sendMessage" method="post">
+      <input name="id" type="hidden" value="<%=list.get(i).getStudent_id() %>">
+       <h4> Type Your Message:</h4>
+      <textarea name="message" class="btn-info form-control lbl" rows="10;">
+      </textarea>
+       <input type="submit" class="btn btn-primary" value="SEND">
+     </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+
+  </div>
+</div>
 <%} %>
+
 
 
 </table>
-<a href="admin-dashboard">BAck To DAshboard</a>
+<a class="btn btn-info" href="admin-dashboard">Back To Dashboard</a>
+</div>
+
+</div>
+
+
+
+
+
+<footer>
+		<div class="footer">
+			<div class="container">
+				<div class="social-icon">
+					<div class="col-md-4">
+						<ul class="social-network">
+							<li><a href="#" class="fb tool-tip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#" class="twitter tool-tip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#" class="gplus tool-tip" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="#" class="linkedin tool-tip" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="#" class="ytube tool-tip" title="You Tube"><i class="fa fa-youtube-play"></i></a></li>
+						</ul>	
+					</div>
+				</div>
+				
+				<div class="col-md-4 col-md-offset-4">
+					<div class="copyright">
+						&copy; Company Theme. All Rights Reserved.
+                        <div class="credits">
+                            <!-- 
+                                All the links in the footer should remain intact. 
+                                You can delete the links only if you purchased the pro version.
+                                Licensing information: https://bootstrapmade.com/license/
+                                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Company
+                            -->
+                            <a href="https://bootstrapmade.com/free-business-bootstrap-themes-website-templates/">Business Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                        </div>
+					</div>
+				</div>						
+			</div>
+			<div class="pull-right">
+				<a href="#home" class="scrollup"><i class="fa fa-angle-up fa-3x"></i></a>
+			</div>
+		</div>
+	</footer>
+	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="js/jquery-2.1.1.min.js"></script>	
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>  
+	<script src="js/wow.min.js"></script>
+    <script src="https://maps.google.com/maps/api/js?sensor=true"></script>
+	<script src="js/functions.js"></script>
+    <script src="contactform/contactform.js"></script>
+    
 </body>
 </html>

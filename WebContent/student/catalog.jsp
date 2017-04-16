@@ -6,21 +6,40 @@
   <%@page import="java.util.ArrayList"%>
   <%@page import="pojo.Courses"%>
   
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>catalog</title>
 
-<html>
-<head>
-<title>Catalog</title>
-<link href="css/bootstrap.min.css" rel="stylesheet" >
-<link href="css/general.css" rel="stylesheet" >
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-</head>
-<body>
-<jsp:include page="../includes/navbar.jsp" /><br><br><br><br>
-<h1>COURSES</h1>
-<table style="border-style:solid; width:1000px; text-align: center">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link href="css/prettyPhoto.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+<jsp:include page="../includes/navbar.jsp" />
+<div id="breadcrumb">
+		<div class="container">	
+			<div class="breadcrumb">							
+				<li><a href="home">Home</a></li>
+				<li>Admin</li>
+				<li><a href="admin-dashboard">Dashboard</a></li>
+				<li>Add Student</li>
+				<li>Catalog</li>					
+			</div>		
+		</div>	
+</div>
+	
+<div class="container">
+<h1 class="list-group-item-info">COURSES</h1>
+<div class="table-responsive">
+<table class="table ">
+<thead class=" btn-primary">
 <tr>
 <th>name</th>
 <th>category</th>
@@ -31,6 +50,8 @@
 <th>Status</th>
 <th>Link</th>
 </tr>
+</thead>
+ <tbody class="btn-info">
 <%
 ArrayList<Courses> list =CourseDAO.getCourses();
 for(int i=0;i<list.size();i++){
@@ -49,15 +70,17 @@ for(int i=0;i<list.size();i++){
 
 <td>
 <%if(list.get(i).getIsAvailable().equalsIgnoreCase("y")){ %>
-<a href="courseselected?name=<%out.print(list.get(i).getCourse_name());%>&fee=<%=list.get(i).getFee()%>">Register</a></td>
+<a class="btn-danger" href="courseselected?name=<%out.print(list.get(i).getCourse_name());%>&fee=<%=list.get(i).getFee()%>">Register</a></td>
 <%}else out.print("Register");%>
 </tr>
 
 <%
 }
 %>
-
+ </tbody>
 </table>
+</div>
+</div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

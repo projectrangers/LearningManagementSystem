@@ -10,17 +10,6 @@ import student.dto.RegisterStudentDTO;
 @SuppressWarnings("serial")
 public class RegAction extends ActionSupport{
  private String message;
- public String getMessage() {
-	return message;
-}
-
-
-
-
-public void setMessage(String message) {
-	this.message = message;
-}
-
 private String  name;
  private String dob;
  private String course;
@@ -31,6 +20,25 @@ private String  name;
  private String ddno;
  private String chekno;
  private double depamount;
+ private String password;
+ 
+ 
+ 
+ public String getPassword() {
+	return password;
+}
+
+public void setPassword(String password) {
+	this.password = password;
+}
+
+public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
  
 /* @Override
 	public void validate() {
@@ -52,7 +60,7 @@ private String  name;
  @Override
 	public void validate() {
 		try {
-			double due=RegisterStudentDTO.getFee(depamount);
+			double due=RegisterStudentDTO.getFee(depamount,course);
 			  if(due<0){
 				  addFieldError("message","deposit valid amount less than or equal to course fee");
 			  }
@@ -201,8 +209,9 @@ public void setDepamount(double depamount) {
 	@Override
 	public String execute() throws Exception {
 		Boolean status = false;
+		//System.out.println("this is under execute!!"+name+dob+qualification+mobile+email+paymethod+ddno+chekno+depamount);
 		try{
-	  status=RegisterStudentDTO.doRegister(name,dob,course,qualification,mobile,email,paymethod,ddno,chekno,depamount);
+	  status=RegisterStudentDTO.doRegister(name,dob,course,qualification,mobile,email,paymethod,ddno,chekno,depamount,password);
 		}catch(Exception e){
 			System.out.println("this is"+e.toString());
 			addFieldError("message", "DUPLICATE ENTRY");
@@ -213,7 +222,10 @@ public void setDepamount(double depamount) {
 		 // RegisterStudentDTO.updateAvailableSeat(course);
 		return SUCCESS;
 	     }
-	else  return ERROR;
+		
+	   else { 
+		   addFieldError("message", "Student Already Registered with Us");
+		   return INPUT;}
 	    }
 	
 }

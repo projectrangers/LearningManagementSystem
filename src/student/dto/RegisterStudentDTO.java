@@ -4,6 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import org.apache.catalina.filters.AddDefaultCharsetFilter;
+
 import com.database.DataBaseConnection;
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
@@ -12,7 +15,7 @@ import xtra.EnrollmentFor;
 public class RegisterStudentDTO{
 
 	public static Boolean doRegister(String name, String dob, String course, String qualification, String mobile,
-			String email, String paymethod, String ddno, String chekno, double depamount) throws ClassNotFoundException, SQLException {
+			String email, String paymethod, String ddno, String chekno, double depamount,String password) throws ClassNotFoundException, SQLException {
 		double dueamount=0;
 		int status = 0;
 		
@@ -43,16 +46,17 @@ public class RegisterStudentDTO{
 		ps.setDouble(11,depamount);
 		
 		 String isdue="No";
-	     dueamount=getFee(depamount);
+	     dueamount=getFee(depamount,course);
 	     if(dueamount>0){
 	    	 isdue="Yes";
+	    	 System.out.print("under doregister:"+isdue);
 	     }
          
 		ps.setString(12, isdue);
 		ps.setDouble(13,dueamount);
 		ps.setString(14,"yes");
 		
-		ps.setString(15,"12345");
+		ps.setString(15,password);
 	}catch(Exception e){
 		System.out.println(e.toString());
 		return false;
@@ -60,10 +64,15 @@ public class RegisterStudentDTO{
 		
 		try{
 			if(dueamount>=0)
+				try{
 			status=ps.executeUpdate();
+				}catch(Exception e){
+					System.out.println("exception in do register:::"+e.toString());
+					return false;
+				}
 			else return false;   //send to errorr page
 			
-			}catch(MySQLIntegrityConstraintViolationException e){
+			}catch(Exception e){
 				return false;          //FOR TEST
 			}
 			if(status!=0){
@@ -78,10 +87,10 @@ public class RegisterStudentDTO{
 	
 	
 	
-	public static Double getFee(double depamount) throws SQLException, ClassNotFoundException{
+	public static Double getFee(double depamount,String coursename) throws SQLException, ClassNotFoundException{
 		Connection cn=DataBaseConnection.connect();
 		double fullfee;
-		String coursename=EnrollmentFor.getName();
+		//String coursename=EnrollmentFor.getName();
 		String sql="select fee from courses where course_name='"+coursename+"'";
 		System.out.println("select fee from courses where course_name='"+coursename+"'");
 		Statement st=cn.createStatement();

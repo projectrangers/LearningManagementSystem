@@ -58,11 +58,17 @@ public class UpdateCategoryAction extends ActionSupport {
 	   return ERROR;
 	}
 	
-	public String delete() throws Exception {
+	public String delete() throws ClassNotFoundException, SQLException {
 		Connection cn=DataBaseConnection.connect();
-		String sql="delete from category where course_name='"+name+"'";
+		String sql="delete from category where name='"+name+"'";
 	    Statement st=	cn.createStatement();
-	    int i=st.executeUpdate(sql);
+	    int i=0;
+	    try{
+	          i=st.executeUpdate(sql);
+	    }catch(Exception e){
+	    	addFieldError("message","!!This Category Include Some course.If you want to delete this category first try to delete course present under this category.!!");
+			return INPUT;
+	    }
 	    st.close();
 	     cn.close();
 		if(i>0){

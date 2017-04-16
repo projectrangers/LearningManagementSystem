@@ -6,10 +6,12 @@
 
 <package name="default" extends="struts-default">
 <action name="home"><result>index.jsp</result> </action>
+<action name="about"><result>about.jsp</result> </action>
 <action name="error"><result>/error.jsp</result> </action>
 <action name="student-login"><result>/student/studentlogin.jsp</result> </action>
 <action name="admin-login"><result>/admin/login.jsp</result> </action>
 <action name="staff-login"><result>/staff/login.jsp</result> </action>
+<action name="staff-register"><result>/staff/register.jsp</result> </action>
 <action name="catalog"><result>/student/catalog.jsp</result></action>
 <action name="admin-dashboard"><result>/admin/dashboard.jsp</result></action>
 <action name="student-dashboard"><result>/student/welcome.jsp</result></action>
@@ -17,6 +19,8 @@
 <action name="courseselected" class="student.action.CourseSelectAction">
 <result>student/register.jsp</result> 
 </action>
+
+<!-- <><><><student<><><><><><> -->
 
 <action name="student" class="student.action.LoginAction">
 <result name="success">/student/welcome.jsp</result>
@@ -39,6 +43,10 @@
 <result name="success">/student/welcome.jsp</result>
 <result name="input">/student/welcome.jsp</result>
 </action>
+
+
+<!-- <><><><><>ADMIN<><><><><>< -->
+
 
 <action name="admin" class="admin.action.LoginAction">
 <result name="success">/admin/dashboard.jsp</result>
@@ -91,6 +99,12 @@
 <result name="input">/admin/addcategory.jsp</result>
 </action>
 
+<action name="deletecat" class="admin.action.UpdateCategoryAction" method="delete">
+<result name="success">/admin/showCatList.jsp</result>
+<result name="error">/error.jsp</result>
+<result name="input">/admin/showCatList.jsp</result>
+</action>
+
 
 <action name="showStudentList" class="admin.action.ShowStudentAction" method="execute">
 <result name="success">/admin/showStudentList.jsp</result>
@@ -114,6 +128,58 @@
 <result name="success">/admin/showStudentList.jsp</result>
 <result name="input">/admin/showStudentList.jsp</result>
 <result name="error">/error.jsp</result>
+</action>
+
+
+<!--   <<<<<<STAFF>>>>>>>>>>>         -->
+<action name="staff" class="staff.action.LoginAction">
+<result name="success">/staff/dashboard.jsp</result>
+<result name="error">/error.jsp</result>
+<result name="input">/staff/login.jsp</result>
+</action>
+
+<action name="regSuccess" class="staff.action.RegAction">
+<result name="success">/staff/success.jsp</result>
+<result name="error">/error.jsp</result>
+<result name="input">/staff/login.jsp</result>
+</action>
+
+<action name="update_profile" class="staff.action.UpdateProfileAction">
+<result name="success">/staff/dashboard.jsp</result>
+<result name="error">/error.jsp</result>
+<result name="input">/staff/dashboard.jsp</result>
+</action>
+
+<action name="showStaff">
+<result>/staff/staffList.jsp</result>
+</action>
+
+<action name="addStaff">
+<result>/staff/register.jsp</result>
+</action>
+
+
+<action name="deleteStaff" class="admin.action.UpdateStaffAction" method="delete">
+<result name="success">/staff/staffList.jsp</result>
+<result name="input">/staff/staffList.jsp</result>
+<result name="error">/error.jsp</result>
+</action>
+
+<action name="stafflogin">
+<result>/staff/login.jsp</result>
+</action>
+
+
+<action name="sendMessage" class="admin.action.SendMessageAction">
+<result name="success">/admin/showStudentList.jsp</result>
+<result name="input">/admin/showStudentList.jsp</result>
+<result name="error">/admin/showStudentList.jsp</result>
+</action>
+
+<action name="deleteMessage" class="admin.action.DeleteMessageAction">
+<result name="success">/admin/success.jsp</result>
+<result name="input">/admin/success.jsp</result>
+<result name="error">/admin/success.jsp</result>
 </action>
 
 </package>

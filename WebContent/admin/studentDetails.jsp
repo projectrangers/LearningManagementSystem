@@ -1,3 +1,4 @@
+<%@page import="pojo.StudentNotification"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="student.dao.StudentDAO"%>
 <%@page import="pojo.Student"%>
@@ -5,86 +6,106 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@taglib uri="/struts-tags" prefix="s"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<title>STUDENTDetails</title>
-<link href="css/bootstrap.min.css" rel="stylesheet" >
-<link href="css/general.css" rel="stylesheet" >
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<script type="text/javascript">
-function printAction(){
-	window.print();
-}
-</script>
-</head>
-<body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>StudentList</title>
 
-<jsp:include page="../includes/navbar.jsp" /> <br><br><br><br>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link href="css/prettyPhoto.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+<jsp:include page="../includes/navbar.jsp" />
+<div id="breadcrumb">
+		<div class="container">	
+			<div class="breadcrumb">							
+				<li><a href="home">Home</a></li>
+				<li>Admin</li>
+				<li><a href="admin-dashboard">Dashboard</a></li>
+				<li><a href="showStudentList">Student list</a></li>
+				<li>Student Detail</li>					
+			</div>		
+		</div>	
+</div>
 
 
- 
-<% 
+<%!int id;
 ArrayList<Student> list;
+%> 
+<% 
+
 
 if(session.getAttribute("email")!=null && session!=null){
 	if(session.getAttribute("user").equals("admin")){
  String email=request.getParameter("id");	
    StudentDAO dao=new StudentDAO();
    list=dao.getStudentData(email); 
-  
+   id= list.get(0).getStudent_id();
   %>
-  <div class="container">
-  <button class="btn btn-info" onclick="printAction()">Print</button>
- <h1 align="center"><% out.print(list.get(0).getName()); %></h1><hr>
- <div class="col-md-4">
- <h2>PROFILE</h2>
- Student_ID:<input type="text" value="<% out.print(list.get(0).getStudent_id()); %>" disabled>
- <br>
- StudentNAME:<input type="text" value="<% out.print(list.get(0).getName()); %>" readOnly><br>
- Registered ON:<input type="text" value="<% out.print(list.get(0).getRegistered_on()); %>" readOnly><br>
- DOB:<input type="date" value="<% out.print(list.get(0).getDob()); %>" readOnly><br>
- QUALIFIACATION:<input type="text" value="<% out.print(list.get(0).getQualification());%>" readOnly><br>
- MOBILE:<input type="number" value="<% out.print(list.get(0).getMobile()); %>" readOnly><br>
- EMAIL:<input type="email" value="<% out.print(list.get(0).getEmail()); %>" readOnly><br>
- Status(IsActive?):<input type="text" value="<% out.print(list.get(0).getIsActive()); %>" readOnly >
- <br>
  
- <hr>
-<s:if test="hasActionMessages()">
+  <div class="container">
+ <h1 class="btn-primary" align="center"><% out.print(list.get(0).getName()); %></h1>
+ <s:if test="hasActionMessages()">
    <div class="welcome">
       <s:actionmessage/>
    </div>
 </s:if>
 <s:fielderror name="mesage"></s:fielderror>
+<div class="row">
+ <div class="col-md-4 btn-info">
+ <h2>PROFILE</h2>
+
+ Student_ID:<input class="form-control" type="text" value="<% out.print(list.get(0).getStudent_id()); %>" disabled>
+ <br> 
+ StudentNAME:<input class="form-control" type="text" value="<% out.print(list.get(0).getName()); %>" readOnly>
+ Registered ON:<input class="form-control" type="text" value="<% out.print(list.get(0).getRegistered_on()); %>" readOnly>
+ DOB:<input class="form-control" type="date" value="<% out.print(list.get(0).getDob()); %>" readOnly>
+ QUALIFIACATION:<input class="form-control" type="text" value="<% out.print(list.get(0).getQualification());%>" readOnly>
+ MOBILE:<input class="form-control" type="number" value="<% out.print(list.get(0).getMobile()); %>" readOnly>
+ EMAIL:<input class="form-control" type="email" value="<% out.print(list.get(0).getEmail()); %>" readOnly>
+ Status(IsActive?):<input class="form-control" type="text" value="<% out.print(list.get(0).getIsActive()); %>" readOnly >
+<br><br>
+
 </div>
 
-<div class="col-md-4">
+<div class="col-md-4 btn-warning">
 <h2>COURSE</h2>
-COURSE-ENROLLED:<input type="text" value="<% out.print(list.get(0).getCourse_enrolled()); %>" readOnly><br>
-Course Id:<input type="text" value="<% out.print(list.get(0).getCourse_category());%>" readOnly><br>
+COURSE-ENROLLED:<input class="form-control"  type="text" value="<% out.print(list.get(0).getCourse_enrolled()); %>" readOnly><br>
+Course Id:<input class="form-control"  type="text" value="<% out.print(list.get(0).getCourse_category());%>" readOnly><br>
 
-duration:<input type="text" value="<% out.print(list.get(0).getCourse_duration());%>" readOnly><br>
-course Fee:Rs.<input type="text" value="<% out.print(list.get(0).getCourse_fee());%>" readOnly><br>
+duration:<input class="form-control"  type="text" value="<% out.print(list.get(0).getCourse_duration());%>" readOnly><br>
+course Fee:Rs.<input class="form-control"  type="text" value="<% out.print(list.get(0).getCourse_fee());%>" readOnly><br>
+
+<br><br><br><br><br><br><br><br><br>
 </div>
-<div class="col-md-4">
+
+
+
+
+
+<div class="col-md-4 btn-info">
 <h2>payment Info</h2>
 
-Method of payment:<input type="text" value="<% out.print(list.get(0).getPaymentmethod());%>" readOnly><br>
+Method of payment:<input class="form-control"  type="text" value="<% out.print(list.get(0).getPaymentmethod());%>" readOnly><br>
 <%
 if(!list.get(0).getPaymentmethod().equals("cash")){
    if(list.get(0).getPaymentmethod().equals("dd")){
-	   out.print("DDNO:<input type='text' value='"+list.get(0).getDdNo()+"' readOnly>");
+	   out.print("DDNO:<input class='form-control'  type='text' value='"+list.get(0).getDdNo()+"' readOnly>");
    }else
-	   out.print("Chek No.:<input type='text' value='"+list.get(0).getChekNo()+"' readOnly>");
+	   out.print("Chek No.:<input class='form-control'  type='text' value='"+list.get(0).getChekNo()+"' readOnly>");
 }
 %>
 
-<br>Is Due?:<input type="text" value="<% out.print(list.get(0).getIsDue());%>" readOnly>
-<br>DUE AMOUNT?:<input type="text" value="<% out.print(list.get(0).getDueAmount());%>" readOnly>
-
+<br>Is Due?:<input class="form-control"  type="text" value="<% out.print(list.get(0).getIsDue());%>" readOnly>
+<br>DUE AMOUNT?:<input class="form-control"  type="text" value="<% out.print(list.get(0).getDueAmount());%>" readOnly>
+<br><br><br><br><br><br><br><br><br><br>
 
 
 
@@ -94,8 +115,93 @@ if(!list.get(0).getPaymentmethod().equals("cash")){
 } else 
   response.sendRedirect("student-login?message=Please Login First");  %>
  </div>
- <br> <br> <br> <br> <br> <br> <br>
+ </div>
+<br><br>
+
+
+<!-- ROW BOTTOM -->
+
+<div class="row">
+ <div class="container">
+  <h3 class="btn-primary">MESSAGES</h3> 
+
+
+  <% 
+ 
+ArrayList<StudentNotification> l=StudentDAO.getMessage(id);
+  if(l.size()>0){
+for(int i=0;i<list.size();i++){
+	
+	%>
+	  <%=l.get(i).getIdPrimary() %>
+   <div class="row">	
+    <hr>
+  <a onclick="confirm('ARE YOU SURE?')" class=" btn btn-danger glyphicon glyphicon-floppy-remove" href="deleteMessage?id=<%=l.get(i).getIdPrimary() %>"></a><div class="btn-info btn"><% out.print(l.get(i).getTime());%></div><div class="badge"><% out.print(l.get(i).getMessage());%></div>
+	</div>
+	<br>
+	<%}%>
+	<%}else{
+		out.print("<h3>NO MESSAGE TO SHOW!!<h3>");
+	} %>
+  </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+
+
+
+
+</div>
+
+
+
+
+<footer>
+		<div class="footer">
+			<div class="container">
+				<div class="social-icon">
+					<div class="col-md-4">
+						<ul class="social-network">
+							<li><a href="#" class="fb tool-tip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#" class="twitter tool-tip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#" class="gplus tool-tip" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="#" class="linkedin tool-tip" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="#" class="ytube tool-tip" title="You Tube"><i class="fa fa-youtube-play"></i></a></li>
+						</ul>	
+					</div>
+				</div>
+				
+				<div class="col-md-4 col-md-offset-4">
+					<div class="copyright">
+						&copy; Company Theme. All Rights Reserved.
+                        <div class="credits">
+                            <!-- 
+                                All the links in the footer should remain intact. 
+                                You can delete the links only if you purchased the pro version.
+                                Licensing information: https://bootstrapmade.com/license/
+                                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Company
+                            -->
+                            <a href="https://bootstrapmade.com/free-business-bootstrap-themes-website-templates/">Business Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                        </div>
+					</div>
+				</div>						
+			</div>
+			<div class="pull-right">
+				<a href="#home" class="scrollup"><i class="fa fa-angle-up fa-3x"></i></a>
+			</div>
+		</div>
+	</footer>
+  
+	  
+	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="js/jquery-2.1.1.min.js"></script>	
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>  
+	<script src="js/wow.min.js"></script>
+    <script src="https://maps.google.com/maps/api/js?sensor=true"></script>
+	<script src="js/functions.js"></script>
+    <script src="contactform/contactform.js"></script>
+    
 </body>
+</html>

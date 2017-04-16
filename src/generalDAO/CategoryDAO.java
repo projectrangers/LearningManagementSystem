@@ -29,7 +29,6 @@ public class CategoryDAO {
 	public static ArrayList<String> getCourseCategories() throws ClassNotFoundException, SQLException{
 		 ArrayList<String> catList=new ArrayList<>();
 		        Connection cn=DataBaseConnection.connect();
-		       
 				String sql="SELECT *from category where isactive='y'";
 			    Statement st=cn.createStatement();
 			    ResultSet rs= st.executeQuery(sql);
@@ -61,8 +60,26 @@ public class CategoryDAO {
 			    cn.close();
 			    return catList;	    
 		}
+	
+	public static String getCategoryByCourse(String name) throws ClassNotFoundException, SQLException{
+		   ArrayList<Category>catList=new ArrayList<>();    
+		    
+		        Connection cn=DataBaseConnection.connect();
+		       String sql="SELECT category from courses where course_name='"+name+"'";
+			    Statement st=cn.createStatement();
+			    ResultSet rs= st.executeQuery(sql);
+			    rs.next();
+			    String cat=rs.getString("category");
+			    rs.close();
+			    st.close();
+			    cn.close();
+			    return cat;	    
+		}
 
 	
-	
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+	ArrayList<Category>	li=CategoryDAO.getCategories();
+	System.out.println(li.get(2).getName());
+	}
 
 }
