@@ -5,7 +5,7 @@
 
 <!-- navbar start -->
 	<header>		
-		<nav class="navbar navbar-default navbar-fixed-top " role="navigation">
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="navigation">
 				<div class="container">					
 					<div class="navbar-header">
@@ -19,8 +19,9 @@
 							<a href="home"><h1><span>Learning</span>System</h1></a>
 						</div>
 					</div>
+					<br>
 					
-					<div class="navbar-collapse collapse">							
+					<div class="navbar-collapse collapse " style="float:right">							
 						<div class="menu">
 							<ul class="nav nav-tabs" role="tablist">
 								<li role="presentation"><a href="home" class="active">Home</a></li>

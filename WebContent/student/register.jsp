@@ -21,6 +21,11 @@
 	<link rel="stylesheet" href="css/animate.css">
 	<link href="css/prettyPhoto.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet" />
+	<style>
+	.form-control{
+	font-weight:bold;}
+	
+	</style>
   </head>
   <body>
 <jsp:include page="../includes/navbar.jsp" />
@@ -42,7 +47,7 @@
  <div class="row contact-wrap"> 
                 <div class="status alert alert-success" style="display: none"></div>
                  <center>    <h5 style="color:red"><s:fielderror name="message"></s:fielderror></h5></center>
-<div class="col-sm-6 col-sm-offset-3">
+<div class="col-sm-6 col-sm-offset-3 btn-primary">
 <form action="regprocess" method="post" role="form" class="contactForm">
 <h2 class="btn-info">General Information</h2>
   <div class="form-group">
@@ -98,47 +103,19 @@
 <input placeholder="Enter Amount Deposited at this time" class="form-control" type="number" name="depamount" maxlength="6"></input>
 </div>
 <div class="form-group">
-<input class="btn btn-primary" type="submit"></input>
+<input class="btn btn-info" type="submit"></input>
 </div>
 </form>
 </div>
+
 </div>
+<br><br>
 </div>
 
 
 <footer>
 		<div class="footer ">
-			<div class="container">
-				<div class="social-icon">
-					<div class="col-md-4">
-						<ul class="social-network">
-							<li><a href="#" class="fb tool-tip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#" class="twitter tool-tip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#" class="gplus tool-tip" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-							<li><a href="#" class="linkedin tool-tip" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="#" class="ytube tool-tip" title="You Tube"><i class="fa fa-youtube-play"></i></a></li>
-						</ul>	
-					</div>
-				</div>
-				
-				<div class="col-md-4 col-md-offset-4">
-					<div class="copyright">
-						&copy; Company Theme. All Rights Reserved.
-                        <div class="credits">
-                            <!-- 
-                                All the links in the footer should remain intact. 
-                                You can delete the links only if you purchased the pro version.
-                                Licensing information: https://bootstrapmade.com/license/
-                                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Company
-                            -->
-                            <a href="https://bootstrapmade.com/free-business-bootstrap-themes-website-templates/">Business Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                        </div>
-					</div>
-				</div>						
-			</div>
-			<div class="pull-right">
-				<a href="#home" class="scrollup"><i class="fa fa-angle-up fa-3x"></i></a>
-			</div>
+			 <jsp:include page="../includes/footer.jsp" />
 		</div>
 	</footer>
 	

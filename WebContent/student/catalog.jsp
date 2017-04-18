@@ -81,9 +81,21 @@ for(int i=0;i<list.size();i++){
 </table>
 </div>
 </div>
+<footer>
+		<div class="footer ">
+			 <jsp:include page="../includes/footer.jsp" />
+		</div>
+	</footer>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+ <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="js/jquery-2.1.1.min.js"></script>	
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>  
+	<script src="js/wow.min.js"></script>
+    <script src="https://maps.google.com/maps/api/js?sensor=true"></script>
+	<script src="js/functions.js"></script>
+    <script src="contactform/contactform.js"></script>
 </body>
 </html>
