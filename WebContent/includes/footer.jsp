@@ -13,7 +13,7 @@
 				
 				<div class="col-md-4 col-md-offset-4">
 					<div class="copyright">
-						&copy; CourseRegistrationSystem
+						&copy; LearningSystem
                         <div class="credits">
                             <!-- 
                                 All the links in the footer should remain intact. 

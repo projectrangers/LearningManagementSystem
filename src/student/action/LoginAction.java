@@ -55,13 +55,16 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			StudentAuthentication val=new StudentAuthentication();
 			Boolean result=val.validate(email,password);
 			if(result==true)
-			{
+			{   
+				Boolean res=val.validateIsActive(email,password);
+				if(res==true){
+				
 				sessionMap.put("login","true");  
 			    sessionMap.put("username",email);
 			    sessionMap.put("email",email); 
 			    sessionMap.put("user","student");
 				return SUCCESS;
-				
+				}else{addFieldError("message","ACCOUNT IS NOT ACTIVATED,YOU CAN'T LOG IN!!!"); return INPUT;}
 		    }else if(result==false){
 		    	addFieldError("message","Invalid username or Password");
 		    	return INPUT;

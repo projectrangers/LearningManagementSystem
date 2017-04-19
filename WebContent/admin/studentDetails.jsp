@@ -1,3 +1,4 @@
+<%@page import="admin.action.DepositAction"%>
 <%@page import="pojo.StudentNotification"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="student.dao.StudentDAO"%>
@@ -102,11 +103,42 @@ if(!list.get(0).getPaymentmethod().equals("cash")){
 	   out.print("Chek No.:<input class='form-control'  type='text' value='"+list.get(0).getChekNo()+"' readOnly>");
 }
 %>
+<% 
+int id=list.get(0).getStudent_id(); 
+  double amt1=list.get(0).getDueAmount();
+if(amt1==0)
+	{DepositAction dp=new DepositAction(); 
+    dp.change(id);
+	}
+
+%>
 
 <br>Is Due?:<input class="form-control"  type="text" value="<% out.print(list.get(0).getIsDue());%>" readOnly>
-<br>DUE AMOUNT?:<input class="form-control"  type="text" value="<% out.print(list.get(0).getDueAmount());%>" readOnly>
-<br><br><br><br><br><br><br><br><br><br>
 
+
+
+
+
+<br>DUE AMOUNT?:<input class="form-control"  type="text" value="<% out.print(list.get(0).getDueAmount());%>" readOnly>
+<br>
+<s:fielderror name="mesage" style="color:red;font-weight:bold"></s:fielderror>
+<%double amt=list.get(0).getDueAmount();
+if(amt>0){
+%>
+<form action="deposit?id=<% out.print(list.get(0).getEmail()); %>" method="POST" class="btn-primary">
+<strong>Deposit Due:</strong>
+<input class="form-control" name="deposit" type="number" placeholder="Enter deposit Amount"><br>
+<input  name="due" type="hidden" value="<% out.print(list.get(0).getDueAmount());%>">
+<input type="hidden" name="fee" value="<% out.print(list.get(0).getCourse_fee());%>">
+<input type="hidden" name="stId" value="<% out.print(list.get(0).getStudent_id()); %>">
+<input class="btn btn-danger" type="submit" value="Proceed">
+</form>
+<br><br><br>
+<%
+}else{
+%>
+<br><br><br><br><br><br><br>
+<%} %>
 
 
 <%
@@ -126,13 +158,13 @@ if(!list.get(0).getPaymentmethod().equals("cash")){
   <h3 class="btn-primary">MESSAGES</h3> 
 
 
-  <% 
+ <% 
  
 ArrayList<StudentNotification> l=StudentDAO.getMessage(id);
   if(l.size()>0){
 for(int i=0;i<list.size();i++){
 	
-	%>
+%>
 	  <%=l.get(i).getIdPrimary() %>
    <div class="row">	
     <hr>

@@ -84,21 +84,31 @@
 <h2 class="btn-info">Payment Information:</h2>
 <div class="btn-warning">
 <div class="radio-inline">
-<label><input onChange="handleChange(this.id);"  type="radio" name="paymethod" value="dd" >DEMAND DRAFT</label>
+<label><input data-toggle="collapse" data-target="#dd" onChange="handleChange(this.id);"  type="radio" name="paymethod" value="dd" >DEMAND DRAFT</label>
 </div>
 <div class="radio-inline">
-<label><input onChange="handleChange(this.id);"  type="radio" name="paymethod" value="chek" >CHEK</label>
+<label><input data-toggle="collapse" data-target="#check" onChange="handleChange(this.id);"  type="radio" name="paymethod" value="chek" >CHECK</label>
 </div>
 <div class="radio-inline">
 <label><input onChange="handleChange(this.id);"  type="radio" name="paymethod" value="cash">CASH</label>
 </div>
-</div>
+
+<div id="dd" class="collapse">
 <div class="form-group">
 <input placeholder="Enter DD NUMBER" class="form-control"  type="text" name="ddno" ></input>
 </div>
-<div class="form-group">
-<input placeholder="Enter CHEK Number" class="form-control" type="text" name="chekno" ></input><br>
 </div>
+
+<div id="check" class="collapse">
+<div class="form-group">
+<input placeholder="Enter CHECK Number" class="form-control" type="text" name="chekno" ></input><br>
+</div>
+</div>
+
+
+</div>
+
+<br>
 <div class="form-group">
 <input placeholder="Enter Amount Deposited at this time" class="form-control" type="number" name="depamount" maxlength="6"></input>
 </div>

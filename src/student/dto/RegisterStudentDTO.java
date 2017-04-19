@@ -54,7 +54,7 @@ public class RegisterStudentDTO{
          
 		ps.setString(12, isdue);
 		ps.setDouble(13,dueamount);
-		ps.setString(14,"yes");
+		ps.setString(14,"no");
 		
 		ps.setString(15,password);
 	}catch(Exception e){

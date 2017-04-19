@@ -27,22 +27,22 @@
 	
 	<div class="aboutus">
 		<div class="container">
-			<h3>Our Insititiue Information</h3>
+			<h3>Learning Management System</h3>
 			<hr>
 			<div class="col-md-7 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
 				<img src="images/7.jpg" class="img-responsive">
-				<h4>We Create, Design and Make it Real</h4>
-				<p>Nam tempor velit sed turpis imperdiet vestibulum. In mattis leo ut sapien euismod id feugiat mauris euismod. 
-				Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-				Phasellus id nulla risus, vel tincidunt turpis. Aliquam a nulla mi, placerat blandit eros. </p>
-				<p>In neque lectus, lobortis a varius a, hendrerit eget dolor. Fusce scelerisque, sem ut viverra sollicitudin, est turpis blandit lacus,
-				in pretium lectus sapien at est. 
-				Integer pretium ipsum sit amet dui feugiat vitae dapibus odio eleifend.</p>
+				<h4>A Complete Solution To Manage Learning platform</h4>
+				<Strong>	<p>These Project has been Made for Institution that can manage the complete learning platform;
+				This is a complete solution to manage courses,Students and Staffs Working in the institution.And also complete 
+				tracking of their fee submission to the institution </p>
+			<p>Made for Final year Academic project in partial fulfillment of the award of degree of Bachelor Of Technology
+				in Computer Science and Technology By:<br><Strong>
+			<Strong>Pulkit Kakkad and Abhishek Goswami.<Strong>
 			</div>
 			<div class="col-md-5 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
 				<div class="skill">
 					<h2>Our Top Courses</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					
 
 					<div class="progress-wrap">
 						<h3>JAVA</h3>
@@ -89,21 +89,17 @@
 		<div class="container">
 			<h3>Our Team</h3>	
 			<div class="text-center">
-				<div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+				<div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
 					<img src="images/services/1.jpg" alt="" >
-					<h4>John Doe</h4>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing eil sed deiusmod tempor</p>
+					<h4>PULKIT KAKKAD</h4>
+					<p>ROLE???</p>
 				</div>
-				<div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+				<div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
 					<img src="images/services/2.jpg" alt="" >
-					<h4>John Doe</h4>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing eil sed deiusmod tempor</p>
+					<h4>ABHISHEK GOSWAMI</h4>
+                     <p>ROLE???</p>
 				</div>
-				<div class="col-md-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms">
-					<img src="images/services/3.jpg" alt="" >
-					<h4>John Doe</h4>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing eil sed deiusmod tempor</p>
-				</div>
+				
 			</div>
 		</div>
 	</div>

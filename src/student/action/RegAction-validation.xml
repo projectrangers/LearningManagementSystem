@@ -16,11 +16,7 @@
   </field-validator>
  </field>
  
- <field name="depamount">
- <field-validator type="required" >
-<message>select deposit amount.</message>
-  </field-validator>
- </field>
+
  
   <field name="email">
  <field-validator type="email" >
@@ -28,4 +24,5 @@
   </field-validator>
  </field>
 
+ 
 </validators>

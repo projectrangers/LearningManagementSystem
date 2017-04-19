@@ -182,6 +182,13 @@
 <result name="error">/admin/success.jsp</result>
 </action>
 
+
+<action name="deposit" class="admin.action.DepositAction">
+<result name="success">/admin/studentDetails.jsp</result>
+<result name="input">/admin/studentDetails.jsp</result>
+<result name="error">/admin/studentDetails.jsp</result>
+</action>
+
 </package>
 
 

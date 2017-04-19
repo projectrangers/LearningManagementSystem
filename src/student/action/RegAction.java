@@ -1,7 +1,6 @@
 package student.action;
 
 
-import com.database.DataBaseConnection;
 import com.opensymphony.xwork2.ActionSupport;
 
 import student.dto.RegisterStudentDTO;
