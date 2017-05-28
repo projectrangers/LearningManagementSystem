@@ -88,16 +88,16 @@
 	<div class="our-team">
 		<div class="container">
 			<h3>Our Team</h3>	
-			<div class="text-center">
+			<div class="text-center round">
 				<div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-					<img src="images/services/1.jpg" alt="" >
+					<img src="images/pulkit.jpg" style="width:400px;"
+							style="height:400px;" alt="" >
 					<h4>PULKIT KAKKAD</h4>
-					<p>ROLE???</p>
 				</div>
 				<div class="col-md-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-					<img src="images/services/2.jpg" alt="" >
+					<img src="images/goswami.jpg" style="width:400px;"
+							style="height:400px;" alt="" >
 					<h4>ABHISHEK GOSWAMI</h4>
-                     <p>ROLE???</p>
 				</div>
 				
 			</div>
